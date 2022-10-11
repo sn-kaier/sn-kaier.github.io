@@ -16,14 +16,16 @@
 
             /* Colors */
             --color-primary: #002272;
-            --color-primary-variant-1: #001f5d;
-            --color-primary-variant-2: #000f2c;
+            --color-gradient-stop-1: #001f5d;
+            --color-gradient-stop-2: #000f2c;
+            --color-gradient-stop-2a: #00225b;
+            --color-gradient-stop-3: #001f5d;
             --color-title-bubble: rgba(0, 34, 114, 0.10);
             --color-on-primary: rgba(255, 255, 255, 0.88);
             --color-surface: white;
             --color-on-surface: #27003f;
+            --color-title: #27003f;
             --color-elevated: rgba(0, 0, 0, 0.15);
-
 
             /*Transition*/
             --transition-duration: 0.3s;
@@ -37,12 +39,15 @@
         @media (prefers-color-scheme: dark) {
             :root {
                 --color-primary: #002272;
-                --color-primary-variant-1: #001a5b;
-                --color-primary-variant-2: #56003e;
-                --color-title-bubble: #464741;
+                --color-gradient-stop-1: #001a5b;
+                --color-gradient-stop-2: #011c25;
+                --color-gradient-stop-2a: #190059;
+                --color-gradient-stop-3: #00032d;
+                --color-title-bubble: #12014c;
                 --color-on-primary: rgba(255, 255, 255, 0.88);
                 --color-surface: #0a0018;
-                --color-on-surface: #ffffff9c;
+                --color-on-surface: #ffffff70;
+                --color-title: rgba(255, 255, 255, 0.8);
                 --color-elevated: rgba(255, 255, 255, 0.15);
             }
         }
@@ -54,6 +59,7 @@
             font-family: 'Nunito', sans-serif;
             font-weight: 400;
             line-height: 1.5;
+            transition: background-color var(--transition-duration) ease;
         }
 
         * {
@@ -67,7 +73,7 @@
         }
 
         .header {
-
+            color: var(--color-title);
         }
 
         .header__inner {
@@ -86,7 +92,7 @@
 
         .header__bg path {
             fill: var(--color-title-bubble);
-            stroke: var(--color-primary);
+            stroke: var(--color-on-surface);
 
             stroke-dasharray: 5px 20px;
 
@@ -265,8 +271,10 @@
         <defs>
             <radialGradient gradientUnits="userSpaceOnUse" cx="150" cy="300" r="270"
                             id="gradient-header">
-                <stop offset="0" style="stop-color: var(--color-primary-variant-1)"></stop>
-                <stop offset="1" style="stop-color: var(--color-primary-variant-2)"></stop>
+                <stop offset="0" style="stop-color: var(--color-gradient-stop-1)"></stop>
+                <stop offset="0.7" style="stop-color: var(--color-gradient-stop-2)"></stop>
+                <stop offset="0.7" style="stop-color: var(--color-gradient-stop-2a)"></stop>
+                <stop offset="1" style="stop-color: var(--color-gradient-stop-3)"></stop>
             </radialGradient>
         </defs>
         <path style='fill: url("#gradient-header")'
