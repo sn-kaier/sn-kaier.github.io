@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Simon Kaier - Software Engineer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Dimensions */
+            --content-width: 720px;
+
+            /* Colors */
+            --color-primary: #002272;
+            --color-primary-variant-1: #001f5d;
+            --color-primary-variant-2: #000f2c;
+            --color-title-bubble: rgba(0, 34, 114, 0.10);
+            --color-on-primary: rgba(255, 255, 255, 0.88);
+            --color-surface: white;
+            --color-on-surface: #27003f;
+            --color-elevated: rgba(0, 0, 0, 0.15);
+
+
+            /*Transition*/
+            --transition-duration: 0.3s;
+
+            /*Shapes*/
+            --border-radius: 6px;
+            --border-width: 1px;
+        }
+
+        /* Colors dark */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-primary: #002272;
+                --color-primary-variant-1: #001a5b;
+                --color-primary-variant-2: #56003e;
+                --color-title-bubble: #464741;
+                --color-on-primary: rgba(255, 255, 255, 0.88);
+                --color-surface: #0a0018;
+                --color-on-surface: #ffffff9c;
+                --color-elevated: rgba(255, 255, 255, 0.15);
+            }
+        }
+
+        body {
+            margin: 0;
+            background: var(--color-surface);
+            color: var(--color-on-surface);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        * {
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+        }
+
+        .subtitle {
+            opacity: 0.8;
+            font-weight: 400;
+        }
+
+        .header {
+
+        }
+
+        .header__inner {
+            position: relative;
+            display: inline-block;
+        }
+
+        .header__bg {
+            position: absolute;
+            top: -4%;
+            left: -19%;
+            width: 150%;
+            height: 120%;
+            z-index: -10;
+        }
+
+        .header__bg path {
+            fill: var(--color-title-bubble);
+            stroke: var(--color-primary);
+
+            stroke-dasharray: 5px 20px;
+
+            stroke-linecap: round;
+            stroke-width: 0;
+            transition: 1s all;
+        }
+
+        .header__inner:hover .header__bg path {
+            stroke-width: 4px;
+            stroke-dashoffset: 100px;
+        }
+
+        nav {
+            position: sticky;
+            top: 6px;
+            margin-block: 4rem;
+        }
+
+        .nav-bg {
+            pointer-events: none;
+            position: absolute;
+            z-index: -10;
+            top: -247px;
+            width: 105%;
+            height: 400px;
+        }
+
+        .nav-bg path {
+            /*fill: var(--color-primary);*/
+        }
+
+        .nav-inner {
+            max-width: var(--content-width);
+            display: flex;
+            margin-inline: auto;
+            padding-inline: 2rem;
+            gap: 0.5rem;
+        }
+
+        .nav-inner a {
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: var(--color-on-primary);
+        }
+
+        .nav-inner a.active {
+            /*border-color: var(--color-surface);*/
+        }
+
+        .magic-corner {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: var(--border-radius);
+            border: var(--border-width) solid transparent;
+            background-clip: padding-box;
+            background-color: var(--color-primary);
+        }
+
+        .magic-corner__pseudo {
+            position: absolute;
+            width: calc(100% + 2 * var(--border-width));
+            height: calc(100% + 2 * var(--border-width));
+            border-radius: var(--border-radius);
+            background: radial-gradient(circle at center, transparent, transparent);
+            transition: background-color var(--transition-duration) ease;
+
+            z-index: -1;
+        }
+
+        .active .magic-corner__pseudo {
+            background: var(--color-on-primary);
+        }
+
+        .container {
+            max-width: var(--content-width);
+            margin-inline: auto;
+            padding-inline: 2rem;
+        }
+    </style>
+
+    <script>
+        function main() {
+            initNavigationActivationHandler();
+            initAllNavHoverEffectListeners();
+        }
+
+        function initAllNavHoverEffectListeners() {
+            const navElements = document.querySelectorAll('.magic-corner__pseudo');
+            console.log('initAllNavHoverEffectListeners for', {navElements})
+            for (const el of navElements) {
+                initNavHoverEffectListener(el);
+            }
+        }
+
+        /**
+         * @param el {HTMLElement}
+         */
+        function initNavHoverEffectListener(el) {
+            const parent = el.parentElement;
+
+            parent.addEventListener('mouseleave', () => {
+                el.style.background = null;
+            });
+
+            parent.addEventListener('mousemove', (evt) => {
+                if (!parent.classList.contains('active')) {
+                    const x = evt.offsetX;
+                    const y = evt.offsetY;
+                    el.style.background = `radial-gradient(circle at ${x}px ${y}px, var(--color-on-primary) 30%, transparent 70%)`;
+                }
+            });
+        }
+
+        function initNavigationActivationHandler() {
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('nav a');
+            const navInner = document.querySelector('.nav-inner');
+
+            document.addEventListener('scroll', () => {
+                const navHeight = navInner.getBoundingClientRect().height;
+
+                let activeId = '';
+                for (const section of sections) {
+                    const y = section.getBoundingClientRect().y;
+                    if (y > navHeight) {
+                        break;
+                    }
+                    activeId = section.id;
+                }
+
+                for (const navItem of navItems) {
+                    const linkId = navItem.getAttribute('href').substring(1);
+                    navItem.classList.remove('active');
+                    if (linkId === activeId) {
+                        navItem.classList.add('active');
+                    }
+                }
+
+            }, {passive: true});
+        }
+    </script>
+</head>
+<body onload="main()">
+
+<section class="container header" id="intro">
+    <div class="header__inner">
+        <h1>Simon Kaier</h1>
+        <p class="subtitle">Sofware Engineer</p>
+
+        <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" class="header__bg" preserveAspectRatio="none">
+            <defs>
+
+            </defs>
+            <path d="M 30.322 38.265 C 74.001 -6.896 184.51 1.708 252.625 38.17 C 320.74 74.632 273.259 184.29 186.819 202.694 C 110.626 218.916 63.919 215.375 34.965 188.903 C 4.995 161.502 -2.256 71.948 30.322 38.265 Z"></path>
+        </svg>
+    </div>
+</section>
+
+<nav>
+    <div class="nav-inner">
+        <a href="#intro" class="magic-corner active">Intro
+            <span class="magic-corner__pseudo"></span>
+        </a>
+        <a href="#about" class="magic-corner">About
+            <span class="magic-corner__pseudo"></span>
+        </a>
+        <a href="#references" class="magic-corner">References
+            <span class="magic-corner__pseudo"></span>
+        </a>
+    </div>
+    <svg class="nav-bg" viewBox="0 0 500 300" width="500" height="300" preserveAspectRatio="none">
+        <defs>
+            <radialGradient gradientUnits="userSpaceOnUse" cx="150" cy="300" r="270"
+                            id="gradient-header">
+                <stop offset="0" style="stop-color: var(--color-primary-variant-1)"></stop>
+                <stop offset="1" style="stop-color: var(--color-primary-variant-2)"></stop>
+            </radialGradient>
+        </defs>
+        <path style='fill: url("#gradient-header")'
+           d="M -0.453 180.026 C 143.404 150.861 467.786 244.827 500.904 2.284 L 501.696 215.242 C 282.135 235.817 16.521 192.081 -0.763 299.503 L -0.453 180.026 Z"
+        ></path>
+    </svg>
+</nav>
+
+<main class="container">
+
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, aliquam aliquid amet aperiam dolorem
+        doloribus, eum ex expedita facere id, iste nam officia officiis perspiciatis possimus quaerat quibusdam soluta
+        tempora tempore temporibus ut vel velit voluptatibus. Dolores nam obcaecati possimus quos tempore tenetur vel
+        velit.
+        Ab ad assumenda autem consectetur, dolores ea et harum impedit ipsam itaque iusto magni, officiis optio placeat
+        quia
+        sint totam? Consequatur fugiat magnam modi molestias mollitia nam nostrum, nulla, numquam obcaecati perspiciatis
+        provident quas rerum sit tempora, voluptas. Ad architecto blanditiis culpa deserunt doloremque fugit harum id
+        laborum magnam maxime nisi placeat provident quae quis quo quos sit totam, unde vitae voluptatum? Debitis
+        doloribus
+        eius fugiat libero molestiae, necessitatibus possimus quia repellat saepe soluta. Accusantium atque consectetur
+        culpa dicta eius expedita fugit modi nam nemo nisi numquam, officia possimus quibusdam recusandae sequi, sit
+        suscipit.
+    </p>
+
+    <section id="about">
+        <h2>About me</h2>
+    </section>
+
+
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore itaque quaerat qui rerum veritatis! Aliquid
+        culpa,
+        esse fugiat hic illo ipsam iusto natus nulla optio, ratione, tempora veniam! Ab accusantium aliquid, animi
+        architecto at beatae corporis, delectus deleniti, dolorem dolorum ex explicabo facere fugit magni maiores
+        molestias
+        mollitia necessitatibus nisi obcaecati odit officiis pariatur perferendis porro quam qui quia quisquam ratione
+        repellendus saepe sint tempora temporibus ullam unde! Consequuntur earum necessitatibus obcaecati perspiciatis
+        quam
+        sed veniam. Accusantium, assumenda at aut cupiditate doloremque expedita illum iste iure iusto, libero magni
+        minus
+        nostrum quia quis quod rem, sunt velit! Ad aliquam atque autem dolore doloremque dolorum error esse eveniet fuga
+        harum illum ipsum minus nobis nulla obcaecati odio perspiciatis possimus, quas quis quod ratione recusandae, rem
+        saepe similique suscipit tenetur vel voluptatibus. Beatae fugit natus neque nihil odio repellat! Cupiditate
+        itaque
+        laboriosam quos. Excepturi, minima quis? Cumque cupiditate deserunt libero praesentium quisquam. Consequatur
+        dignissimos earum fugit magni modi numquam recusandae rerum sint ut velit? Ab accusamus aliquam aliquid beatae
+        blanditiis dignissimos dolor doloribus, eligendi et explicabo fuga fugiat id itaque libero magni maxime minima
+        nam
+        officiis pariatur quod reiciendis rem rerum sint sunt ut. Enim ex, quibusdam. Autem, expedita ipsam provident
+        qui
+        reprehenderit tempora veniam voluptatem! Amet cum distinctio doloribus excepturi ipsa, nihil quidem sapiente
+        sit.
+        Dolor ea eligendi enim eos eum ex, exercitationem explicabo harum incidunt ipsum iste modi natus necessitatibus
+        neque porro quia quidem repellat rerum saepe, sit tempore vel, voluptates! Autem beatae consequatur, cupiditate
+        dolores exercitationem fugiat fugit ipsum labore laboriosam necessitatibus pariatur, quasi quo quos sed,
+        similique.
+        Ab ad commodi earum fuga id in laborum nam nisi tenetur unde?
+
+    </p>
+
+    <section id="references">
+        <h2>References</h2>
+
+        <p>
+
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aliquam aperiam delectus
+            deleniti
+            deserunt dicta doloremque, doloribus id in iste iusto minus molestiae numquam perferendis praesentium
+            quisquam rem
+            repellat unde veniam? A ab aliquid cupiditate doloremque earum eius labore non placeat ratione, veniam!
+            Autem est
+            ipsam iure officia reiciendis? Ad culpa doloribus dolorum esse expedita, laboriosam, minus numquam officia
+            quasi
+            quidem, rem similique tempora totam unde velit. Atque autem, consectetur culpa deleniti dolorem ea eligendi
+            facilis
+            ipsa labore molestiae odio perferendis quas quibusdam, quisquam rem? Animi, aperiam at beatae, commodi
+            consequuntur
+            eum molestiae officia omnis possimus, reprehenderit sequi vero? A accusantium amet animi aut autem,
+            consectetur
+            delectus distinctio dolore dolores eligendi eveniet exercitationem labore laboriosam laborum maxime,
+            molestias nam
+            necessitatibus nobis non obcaecati optio perferendis placeat quas quia quidem ratione, rerum sequi similique
+            tempora
+            veritatis! Animi asperiores commodi dolore dolores eos eveniet, illo labore laboriosam nihil obcaecati
+            perspiciatis
+            porro quisquam voluptate. Cumque, neque, possimus? Aliquid consectetur excepturi impedit modi molestias
+            neque odit
+            quas repellendus? Ab accusamus cupiditate deleniti dignissimos dolorem eos hic iure maxime natus
+            perspiciatis porro,
+            provident qui quisquam, repudiandae sapiente unde voluptas. Animi libero pariatur quas quasi recusandae
+            repellendus
+            repudiandae sed sit soluta suscipit! Ad aliquid amet aperiam blanditiis corporis dolores dolorum earum
+            eligendi enim
+            error esse et eum expedita, fuga illum incidunt ipsa iusto numquam officiis perferendis placeat quae quaerat
+            quia
+            quis rerum sit voluptate. A et laboriosam quibusdam voluptate.
+
+        </p>
+
+    </section>
+</main>
+
+</body>
+</html>
