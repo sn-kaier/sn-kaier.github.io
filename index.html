@@ -16,10 +16,10 @@
 
             /* Colors */
             --color-primary: #002272;
-            --color-gradient-stop-1: #001f5d;
+            --color-gradient-stop-1: #3c0093;
             --color-gradient-stop-2: #000f2c;
             --color-gradient-stop-2a: #00225b;
-            --color-gradient-stop-3: #001f5d;
+            --color-gradient-stop-3: #00308f;
             --color-title-bubble: rgba(0, 34, 114, 0.10);
             --color-on-primary: rgba(255, 255, 255, 0.88);
             --color-surface: white;
@@ -40,13 +40,13 @@
             :root {
                 --color-primary: #002272;
                 --color-gradient-stop-1: #001a5b;
-                --color-gradient-stop-2: #011c25;
-                --color-gradient-stop-2a: #190059;
-                --color-gradient-stop-3: #00032d;
+                --color-gradient-stop-2: #001050;
+                --color-gradient-stop-2a: #2d0f79;
+                --color-gradient-stop-3: #580072;
                 --color-title-bubble: #12014c;
                 --color-on-primary: rgba(255, 255, 255, 0.88);
                 --color-surface: #0a0018;
-                --color-on-surface: #ffffff70;
+                --color-on-surface: #ffffffbf;
                 --color-title: rgba(255, 255, 255, 0.8);
                 --color-elevated: rgba(255, 255, 255, 0.15);
             }
@@ -121,10 +121,6 @@
             height: 400px;
         }
 
-        .nav-bg path {
-            /*fill: var(--color-primary);*/
-        }
-
         .nav-inner {
             max-width: var(--content-width);
             display: flex;
@@ -137,10 +133,6 @@
             padding: 0.5rem 1rem;
             text-decoration: none;
             color: var(--color-on-primary);
-        }
-
-        .nav-inner a.active {
-            /*border-color: var(--color-surface);*/
         }
 
         .magic-corner {
@@ -281,11 +273,11 @@
     </div>
     <svg class="nav-bg" viewBox="0 0 500 300" width="500" height="300" preserveAspectRatio="none">
         <defs>
-            <radialGradient gradientUnits="userSpaceOnUse" cx="150" cy="300" r="270"
+            <radialGradient gradientUnits="userSpaceOnUse" cx="150" cy="300" r="400"
                             id="gradient-header">
                 <stop offset="0" style="stop-color: var(--color-gradient-stop-1)"></stop>
-                <stop offset="0.7" style="stop-color: var(--color-gradient-stop-2)"></stop>
-                <stop offset="0.7" style="stop-color: var(--color-gradient-stop-2a)"></stop>
+                <stop offset="0.6" style="stop-color: var(--color-gradient-stop-2)"></stop>
+                <stop offset="0.6" style="stop-color: var(--color-gradient-stop-2a)"></stop>
                 <stop offset="1" style="stop-color: var(--color-gradient-stop-3)"></stop>
             </radialGradient>
         </defs>
@@ -296,7 +288,6 @@
 </nav>
 
 <main class="container">
-
     <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, aliquam aliquid amet aperiam dolorem
         doloribus, eum ex expedita facere id, iste nam officia officiis perspiciatis possimus quaerat quibusdam soluta
@@ -315,45 +306,51 @@
 
     <section id="about">
         <h2>About me</h2>
+
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore itaque quaerat qui rerum veritatis! Aliquid
+            culpa,
+            esse fugiat hic illo ipsam iusto natus nulla optio, ratione, tempora veniam! Ab accusantium aliquid, animi
+            architecto at beatae corporis, delectus deleniti, dolorem dolorum ex explicabo facere fugit magni maiores
+            molestias
+            mollitia necessitatibus nisi obcaecati odit officiis pariatur perferendis porro quam qui quia quisquam
+            ratione
+            repellendus saepe sint tempora temporibus ullam unde! Consequuntur earum necessitatibus obcaecati
+            perspiciatis
+            quam
+            sed veniam. Accusantium, assumenda at aut cupiditate doloremque expedita illum iste iure iusto, libero magni
+            minus
+            nostrum quia quis quod rem, sunt velit! Ad aliquam atque autem dolore doloremque dolorum error esse eveniet
+            fuga
+            harum illum ipsum minus nobis nulla obcaecati odio perspiciatis possimus, quas quis quod ratione recusandae,
+            rem
+            saepe similique suscipit tenetur vel voluptatibus. Beatae fugit natus neque nihil odio repellat! Cupiditate
+            itaque
+            laboriosam quos. Excepturi, minima quis? Cumque cupiditate deserunt libero praesentium quisquam. Consequatur
+            dignissimos earum fugit magni modi numquam recusandae rerum sint ut velit? Ab accusamus aliquam aliquid
+            beatae
+            blanditiis dignissimos dolor doloribus, eligendi et explicabo fuga fugiat id itaque libero magni maxime
+            minima
+            nam
+            officiis pariatur quod reiciendis rem rerum sint sunt ut. Enim ex, quibusdam. Autem, expedita ipsam
+            provident
+            qui
+            reprehenderit tempora veniam voluptatem! Amet cum distinctio doloribus excepturi ipsa, nihil quidem sapiente
+            sit.
+            Dolor ea eligendi enim eos eum ex, exercitationem explicabo harum incidunt ipsum iste modi natus
+            necessitatibus
+            neque porro quia quidem repellat rerum saepe, sit tempore vel, voluptates! Autem beatae consequatur,
+            cupiditate
+            dolores exercitationem fugiat fugit ipsum labore laboriosam necessitatibus pariatur, quasi quo quos sed,
+            similique.
+            Ab ad commodi earum fuga id in laborum nam nisi tenetur unde?
+        </p>
     </section>
-
-
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore itaque quaerat qui rerum veritatis! Aliquid
-        culpa,
-        esse fugiat hic illo ipsam iusto natus nulla optio, ratione, tempora veniam! Ab accusantium aliquid, animi
-        architecto at beatae corporis, delectus deleniti, dolorem dolorum ex explicabo facere fugit magni maiores
-        molestias
-        mollitia necessitatibus nisi obcaecati odit officiis pariatur perferendis porro quam qui quia quisquam ratione
-        repellendus saepe sint tempora temporibus ullam unde! Consequuntur earum necessitatibus obcaecati perspiciatis
-        quam
-        sed veniam. Accusantium, assumenda at aut cupiditate doloremque expedita illum iste iure iusto, libero magni
-        minus
-        nostrum quia quis quod rem, sunt velit! Ad aliquam atque autem dolore doloremque dolorum error esse eveniet fuga
-        harum illum ipsum minus nobis nulla obcaecati odio perspiciatis possimus, quas quis quod ratione recusandae, rem
-        saepe similique suscipit tenetur vel voluptatibus. Beatae fugit natus neque nihil odio repellat! Cupiditate
-        itaque
-        laboriosam quos. Excepturi, minima quis? Cumque cupiditate deserunt libero praesentium quisquam. Consequatur
-        dignissimos earum fugit magni modi numquam recusandae rerum sint ut velit? Ab accusamus aliquam aliquid beatae
-        blanditiis dignissimos dolor doloribus, eligendi et explicabo fuga fugiat id itaque libero magni maxime minima
-        nam
-        officiis pariatur quod reiciendis rem rerum sint sunt ut. Enim ex, quibusdam. Autem, expedita ipsam provident
-        qui
-        reprehenderit tempora veniam voluptatem! Amet cum distinctio doloribus excepturi ipsa, nihil quidem sapiente
-        sit.
-        Dolor ea eligendi enim eos eum ex, exercitationem explicabo harum incidunt ipsum iste modi natus necessitatibus
-        neque porro quia quidem repellat rerum saepe, sit tempore vel, voluptates! Autem beatae consequatur, cupiditate
-        dolores exercitationem fugiat fugit ipsum labore laboriosam necessitatibus pariatur, quasi quo quos sed,
-        similique.
-        Ab ad commodi earum fuga id in laborum nam nisi tenetur unde?
-
-    </p>
 
     <section id="references">
         <h2>References</h2>
 
         <p>
-
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aliquam aperiam delectus
             deleniti
             deserunt dicta doloremque, doloribus id in iste iusto minus molestiae numquam perferendis praesentium
@@ -385,9 +382,7 @@
             error esse et eum expedita, fuga illum incidunt ipsa iusto numquam officiis perferendis placeat quae quaerat
             quia
             quis rerum sit voluptate. A et laboriosam quibusdam voluptate.
-
         </p>
-
     </section>
 </main>
 
