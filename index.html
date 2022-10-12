@@ -200,16 +200,25 @@
                 el.style.background = null;
             });
 
+            let ignoreMouseMove = false;
+
+            parent.addEventListener('touchstart', () => {
+                ignoreMouseMove = true;
+            });
+            parent.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    ignoreMouseMove = false;
+                }, 200);
+            });
+
             parent.addEventListener('mousemove', (evt) => {
-                if (evt.sourceCapabilities && evt.sourceCapabilities.firesTouchEvents) {
+                if (ignoreMouseMove || parent.classList.contains('active')) {
                     return; // ignore touch input
                 }
 
-                if (!parent.classList.contains('active')) {
-                    const x = evt.offsetX;
-                    const y = evt.offsetY;
-                    el.style.background = `radial-gradient(circle at ${x}px ${y}px, var(--color-on-primary) 30%, transparent 70%)`;
-                }
+                const x = evt.offsetX;
+                const y = evt.offsetY;
+                el.style.background = `radial-gradient(circle at ${x}px ${y}px, var(--color-on-primary) 30%, transparent 70%)`;
             });
         }
 
@@ -281,7 +290,7 @@
             </radialGradient>
         </defs>
         <path style='fill: url("#gradient-header")'
-           d="M -0.453 180.026 C 143.404 150.861 467.786 244.827 500.904 2.284 L 501.696 215.242 C 282.135 235.817 16.521 192.081 -0.763 299.503 L -0.453 180.026 Z"
+              d="M -0.453 180.026 C 143.404 150.861 467.786 244.827 500.904 2.284 L 501.696 215.242 C 282.135 235.817 16.521 192.081 -0.763 299.503 L -0.453 180.026 Z"
         ></path>
     </svg>
 </nav>
