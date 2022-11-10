@@ -32,6 +32,7 @@
 
             /*Shapes*/
             --border-radius: 6px;
+            --border-radius-l: 2rem;
             --border-width: 1px;
         }
 
@@ -100,13 +101,23 @@
             margin-block: 4rem;
         }
 
-        .nav-bg {
+        .nav-bg-container {
+            overflow: hidden;
+            justify-content: center;
+            display: flex;
+
             pointer-events: none;
             position: absolute;
             z-index: -10;
-            top: -247px;
-            width: 105%;
-            height: 400px;
+            top: -190px;
+            height: 315px;
+            width: 100vw;
+        }
+
+        .nav-bg {
+            width: 100%;
+            min-width: 800px;
+            height: 100%;
         }
 
         .nav-inner {
@@ -118,7 +129,7 @@
         }
 
         .nav-inner a {
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 1rem;
             text-decoration: none;
             color: var(--color-on-primary);
         }
@@ -154,6 +165,17 @@
             max-width: var(--content-width);
             margin-inline: auto;
             padding-inline: 2rem;
+        }
+
+        ul.list {
+            list-style-type: square;
+        }
+
+        article {
+            border-radius: var(--border-radius);
+            outline: 8px solid var(--color-gradient-stop-3);
+            outline-offset: 1rem;
+            margin-block: 2rem;
         }
     </style>
 
@@ -255,26 +277,29 @@
         <a href="#about" class="magic-corner">About
             <span class="magic-corner__pseudo"></span>
         </a>
-        <a href="#references" class="magic-corner">References
+        <a href="#previous-work" class="magic-corner">Previous work
             <span class="magic-corner__pseudo"></span>
         </a>
     </div>
-    <svg class="nav-bg" viewBox="0 0 500 300" width="500" height="300" preserveAspectRatio="none">
-        <defs>
-            <radialGradient gradientUnits="userSpaceOnUse" cx="150" cy="300" r="400"
-                            id="gradient-header">
-                <stop offset="0" style="stop-color: var(--color-gradient-stop-1)"></stop>
-                <stop offset="0.6" style="stop-color: var(--color-gradient-stop-2)"></stop>
-                <stop offset="0.6015" style="stop-color: var(--color-surface)"></stop>
-                <stop offset="0.61" style="stop-color: var(--color-surface)"></stop>
-                <stop offset="0.6115" style="stop-color: var(--color-gradient-stop-2a)"></stop>
-                <stop offset="1" style="stop-color: var(--color-gradient-stop-3)"></stop>
-            </radialGradient>
-        </defs>
-        <path style='fill: url("#gradient-header")'
-              d="M -0.453 180.026 C 143.404 150.861 467.786 244.827 500.904 2.284 L 501.696 215.242 C 282.135 235.817 16.521 192.081 -0.763 299.503 L -0.453 180.026 Z"
-        ></path>
-    </svg>
+    <div class="nav-bg-container" aria-hidden="true">
+        <svg class="nav-bg" viewBox="0 0 500 300" width="500" height="300" preserveAspectRatio="none">
+            <defs>
+                <radialGradient gradientUnits="userSpaceOnUse" cx="150" cy="300" r="400"
+                                id="gradient-header">
+                    <stop offset="0" style="stop-color: var(--color-gradient-stop-1)"></stop>
+                    <stop offset="0.6" style="stop-color: var(--color-gradient-stop-2)"></stop>
+                    <stop offset="0.6015" style="stop-color: var(--color-surface)"></stop>
+                    <stop offset="0.61" style="stop-color: var(--color-surface)"></stop>
+                    <stop offset="0.6115" style="stop-color: var(--color-gradient-stop-2a)"></stop>
+                    <stop offset="1" style="stop-color: var(--color-gradient-stop-3)"></stop>
+                </radialGradient>
+            </defs>
+            <path style='fill: url("#gradient-header")'
+                  d="M -0.453 180.026 C 143.404 150.861 467.786 244.827 500.904 2.284 L 501.696 215.242 C 282.135 235.817 16.521 192.081 -0.763 299.503 L -0.453 180.026 Z"
+            ></path>
+        </svg>
+    </div>
+
 </nav>
 
 <main class="container">
@@ -337,42 +362,28 @@
         </p>
     </section>
 
-    <section id="references">
-        <h2>References</h2>
+    <h2 id="h-previous-work">My previous work</h2>
+    <section id="previous-work" aria-labelledby="h-as-freelancer">
+        <h3 id="h-as-freelancer">As freelancer</h3>
 
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aliquam aperiam delectus
-            deleniti
-            deserunt dicta doloremque, doloribus id in iste iusto minus molestiae numquam perferendis praesentium
-            quisquam rem
-            repellat unde veniam? A ab aliquid cupiditate doloremque earum eius labore non placeat ratione, veniam!
-            Autem est
-            ipsam iure officia reiciendis? Ad culpa doloribus dolorum esse expedita, laboriosam, minus numquam officia
-            quasi
-            quidem, rem similique tempora totam unde velit. Atque autem, consectetur culpa deleniti dolorem ea eligendi
-            facilis
-            ipsa labore molestiae odio perferendis quas quibusdam, quisquam rem? Animi, aperiam at beatae, commodi
-            consequuntur
-            eum molestiae officia omnis possimus, reprehenderit sequi vero? A accusantium amet animi aut autem,
-            consectetur
-            delectus distinctio dolore dolores eligendi eveniet exercitationem labore laboriosam laborum maxime,
-            molestias nam
-            necessitatibus nobis non obcaecati optio perferendis placeat quas quia quidem ratione, rerum sequi similique
-            tempora
-            veritatis! Animi asperiores commodi dolore dolores eos eveniet, illo labore laboriosam nihil obcaecati
-            perspiciatis
-            porro quisquam voluptate. Cumque, neque, possimus? Aliquid consectetur excepturi impedit modi molestias
-            neque odit
-            quas repellendus? Ab accusamus cupiditate deleniti dignissimos dolorem eos hic iure maxime natus
-            perspiciatis porro,
-            provident qui quisquam, repudiandae sapiente unde voluptas. Animi libero pariatur quas quasi recusandae
-            repellendus
-            repudiandae sed sit soluta suscipit! Ad aliquid amet aperiam blanditiis corporis dolores dolorum earum
-            eligendi enim
-            error esse et eum expedita, fuga illum incidunt ipsa iusto numquam officiis perferendis placeat quae quaerat
-            quia
-            quis rerum sit voluptate. A et laboriosam quibusdam voluptate.
-        </p>
+        <article aria-labelledby="h-sick-waldkirch">
+            <h4 id="h-sick-waldkirch">Full Stack Development for SICK AG</h4>
+            <sub>08.2021 - 04.2022</sub>
+            <img width="100" height="100" src="./images/sick-ag.svg" alt="SICK AG logo">
+
+            <div class="tech-icon-list">
+                <img src="./images/TypeScript.svg" width="40" height="40" alt="TypeScript logo" title="TypeScript">
+                <img src="./images/node-red.svg" width="40" height="40" alt="Node red logo" title="Node Red">
+                <img src="./images/angular.svg" width="40" height="40" alt="Angular logo" title="Angular">
+            </div>
+
+            <ul class="list">
+                <li>Angular 12</li>
+                <li>Network communication between control server and frontend via REST with NestJs</li>
+                <li>Sensor specific REST services on Node-RED using TypeScript</li>
+            </ul>
+
+        </article>
     </section>
 </main>
 
